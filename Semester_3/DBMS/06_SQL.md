@@ -625,9 +625,169 @@ Example
         FROM Products;
 
 
+### 10.  SQL `LIKE` Operator
+
+The `LIKE` operator is used in SQL to search for a specified pattern in a column. It is commonly used with the `WHERE` clause to filter records based on text patterns.
+
+## Syntax
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name LIKE pattern;
+```
+
+## Wildcards
+
+| Wildcard | Description |
+|----------|-------------|
+| `%` | Matches **zero or more characters** |
+| `_` | Matches **exactly one character** |
+
+---
+
+## Examples
+
+### 1. Starts With
+
+```sql
+SELECT * FROM Products
+WHERE Name LIKE 'A%';
+```
+
+**Result:** Returns all products whose name starts with **A**.
+
+Examples:
+- Apple
+- Acer Laptop
+- AirPods
+
+---
+
+### 2. Ends With
+
+```sql
+SELECT * FROM Products
+WHERE Name LIKE '%w';
+```
+
+**Result:** Returns all products whose name ends with **w**.
+
+Examples:
+- Saw
+- Screw
+- Window
+
+---
+
+### 3. Contains
+
+```sql
+SELECT * FROM Products
+WHERE Name LIKE '%phone%';
+```
+
+**Result:** Returns all products whose name contains **phone**.
+
+Examples:
+- Smartphone
+- Headphone
+- iPhone
+
+---
+
+### 4. Exactly One Character (`_`)
+
+```sql
+SELECT * FROM Products
+WHERE Name LIKE '_at';
+```
+
+**Result:** Returns names with exactly three letters ending in **at**.
+
+Examples:
+- Cat
+- Bat
+- Hat
+
+---
+
+### 5. Second Character is 'a'
+
+```sql
+SELECT * FROM Products
+WHERE Name LIKE '_a%';
+```
+
+Examples:
+- Samsung
+- Camera
+- Table
+
+---
+
+### 6. Exactly Five Characters
+
+```sql
+SELECT * FROM Products
+WHERE Name LIKE '_____';
+```
+
+**Result:** Returns names containing exactly **5 characters**.
+
+Examples:
+- Apple
+- Mouse
+
+---
+
+## Wildcard Summary
+
+| Pattern | Meaning |
+|---------|---------|
+| `'A%'` | Starts with **A** |
+| `'%A'` | Ends with **A** |
+| `'%A%'` | Contains **A** anywhere |
+| `'A_B%'` | Starts with **A**, third character is **B** |
+| `'_____'` | Exactly **5 characters** |
+| `'_a%'` | Second character is **a** |
+
+---
+
+## Key Points
+
+- `LIKE` is used for **pattern matching**.
+- `%` matches **zero or more characters**.
+- `_` matches **exactly one character**.
+- `LIKE` is commonly used with the `WHERE` clause.
+- It is mainly used with text-based columns (`CHAR`, `VARCHAR`, `TEXT`, etc.).
+
+## Example
+
+```sql
+SELECT Product_Name
+FROM Products
+WHERE Product_Name LIKE '%Book%';
+```
+
+This query returns all products whose name contains the word **"Book"**.
+
+
 ### SQL Clauses Practice Questions
 
-Assume the table name is Products.
+    Assume the table name is Products.
+    | Column Name    | Data Type    | Constraints                         |
+    | -------------- | ------------ | ----------------------------------- |
+    | Student_ID     | INT          | Primary Key, Auto Increment         |
+    | Student_Name   | VARCHAR(100) | NOT NULL                            |
+    | Roll_No        | CHAR(8)      | UNIQUE                              |
+    | Age            | INT          | Must be greater than or equal to 18 |
+    | Gender         | VARCHAR(10)  | NOT NULL                            |
+    | Course         | VARCHAR(50)  | NOT NULL                            |
+    | Department     | VARCHAR(50)  | NOT NULL                            |
+    | CGPA           | DECIMAL(3,2) | Default 0.00                        |
+    | Admission_Date | DATE         | NOT NULL                            |
+
 
 Q1.
 
@@ -662,3 +822,225 @@ Display Product_Name as Item_Name and Price as Item_Price.
 Q8.
 
 Display all unique categories from the Products table.
+
+
+##  SQL String Functions
+
+String functions are built-in SQL functions used to manipulate and analyze text data.
+
+---
+
+## 1. `UPPER()`
+
+Converts all characters in a string to **uppercase**.
+
+### Syntax
+
+```sql
+UPPER(column_name)
+```
+
+### Example
+
+```sql
+SELECT UPPER(Product_Name)
+FROM Products;
+```
+
+**Output**
+
+| Product_Name |
+|--------------|
+| LAPTOP |
+| MOUSE |
+| KEYBOARD |
+
+---
+
+## 2. `LOWER()`
+
+Converts all characters in a string to **lowercase**.
+
+### Syntax
+
+```sql
+LOWER(column_name)
+```
+
+### Example
+
+```sql
+SELECT LOWER(Product_Name)
+FROM Products;
+```
+
+**Output**
+
+| Product_Name |
+|--------------|
+| laptop |
+| mouse |
+| keyboard |
+
+---
+
+## 3. `LENGTH()`
+
+Returns the **number of characters** in a string.
+
+### Syntax
+
+```sql
+LENGTH(column_name)
+```
+
+### Example
+
+```sql
+SELECT Product_Name, LENGTH(Product_Name) AS Length
+FROM Products;
+```
+
+**Output**
+
+| Product_Name | Length |
+|--------------|--------|
+| Laptop | 6 |
+| Mouse | 5 |
+| Keyboard | 8 |
+
+---
+
+
+
+
+## 4. `SUBSTRING()`
+
+Extracts a specified part of a string.
+
+### Syntax
+
+```sql
+SUBSTRING(column_name, start_position, length)
+```
+
+- `start_position` → Starting position (starts from **1**).
+- `length` → Number of characters to extract.
+
+### Example
+
+```sql
+SELECT SUBSTRING(Product_Name, 1, 4)
+FROM Products;
+```
+
+**Output**
+
+    | Product_Name |
+    |--------------|
+    | Lapt |
+    | Mous |
+    | Keyb |
+
+
+## Summary
+
+| Function | Description | Example |
+|----------|-------------|---------|
+| `UPPER()` | Converts text to uppercase | `UPPER('sql')` → `SQL` |
+| `LOWER()` | Converts text to lowercase | `LOWER('SQL')` → `sql` |
+| `LENGTH()` | Returns the number of characters | `LENGTH('Laptop')` → `6` |
+
+
+## SQL `CASE` Statement
+
+The `CASE` statement is used to apply **conditional logic** in SQL. It works like an **IF...ELSE** statement and returns a value based on the first condition that is true.
+
+---
+
+## Syntax
+
+```sql
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    ...
+    ELSE result
+END
+```
+
+---
+
+## Example 1: Product Availability
+
+```sql
+SELECT Product_Name,
+       Stock_Quantity,
+       CASE
+           WHEN Stock_Quantity = 0 THEN 'Out of Stock'
+           WHEN Stock_Quantity <= 10 THEN 'Low Stock'
+           ELSE 'In Stock'
+       END AS Stock_Status
+FROM Products;
+```
+
+**Output**
+
+| Product_Name | Stock_Quantity | Stock_Status |
+|--------------|---------------:|--------------|
+| Laptop | 25 | In Stock |
+| Mouse | 8 | Low Stock |
+| Keyboard | 0 | Out of Stock |
+
+---
+
+## Example 2: Grade Classification
+
+```sql
+SELECT Student_Name,
+       Marks,
+       CASE
+           WHEN Marks >= 90 THEN 'A'
+           WHEN Marks >= 75 THEN 'B'
+           WHEN Marks >= 60 THEN 'C'
+           ELSE 'Fail'
+       END AS Grade
+FROM Students;
+```
+
+---
+
+## Example 3: Price Category
+
+```sql
+SELECT Product_Name,
+       Price,
+       CASE
+           WHEN Price >= 50000 THEN 'Expensive'
+           WHEN Price >= 10000 THEN 'Moderate'
+           ELSE 'Budget'
+       END AS Price_Category
+FROM Products;
+```
+
+---
+
+## Key Points
+
+- `CASE` is used to implement **conditional logic** in SQL.
+- Conditions are checked **from top to bottom**.
+- The **first matching condition** is returned.
+- `ELSE` is optional. If omitted and no condition matches, `NULL` is returned.
+- `CASE` can be used with `SELECT`, `WHERE`, `ORDER BY`, `GROUP BY`, and `HAVING`.
+
+---
+
+## Summary
+
+| Keyword | Description |
+|---------|-------------|
+| `CASE` | Starts the conditional expression |
+| `WHEN` | Specifies a condition |
+| `THEN` | Value returned if the condition is true |
+| `ELSE` | Default value if no conditions match |
+| `END` | Ends the `CASE` expression |

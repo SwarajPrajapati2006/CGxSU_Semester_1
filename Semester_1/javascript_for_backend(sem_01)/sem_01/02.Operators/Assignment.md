@@ -169,4 +169,87 @@ Start with the given value, then use `/=` to update it:
 3. An image’s size factor is 3; find the total area growth factor using `**=`.
 
 
+# Part C: Comparison & Relational Operators 
 
+For each question, declare variables, perform the comparison, and print `true` or `false`.  
+Use meaningful variable names and add brief comments.
+
+***
+
+## 1. Loose Equality `==`
+
+1. Stored password is `1234`, user enters `"1234"`. Check if they are equal using `==`.  
+2. User answer is `0`, default answer is `false`. Check if they are equal using `==`.  
+3. User input is `""`, submitted flag is `false`. Check if they are equal using `==`.  
+4. Backend returns `null`, frontend has `undefined`. Check if both mean “no value” using `==`.  
+5. Two devices send scores `500` and `"500"`. Check if they are equal using `==`.
+
+***
+
+## 2. Loose Inequality `!=`
+
+1. Two discount codes are `"SAVE10"` and `"SAVE20"`. Check if they are different using `!=`.  
+2. User role is `"admin"`, default role is `"guest"`. Check if they are not equal using `!=`.  
+3. Correct answer is `42`, user answer is `"40"`. Check if they are not equal using `!=`.  
+4. Email input is `""`, empty flag is `false`. Check if they are not equal using `!=`.  
+5. User ID is `null`, valid ID is `101`. Check if they are not equal using `!=`.
+
+***
+
+## 3. Strict Equality `===`
+
+1. Stored password is `1234`, entered password is `"1234"`. Check strict equality using `===`.  
+2. Two account numbers are `1234567890` and `1234567890`. Check if they are strictly equal.  
+3. Feature flag is `true`, required state is `1`. Check if they are strictly equal.  
+4. Database value is `null`, cache value is `undefined`. Check strict equality.  
+5. Two scores are `85` and `85`. Check if they are strictly equal.
+
+***
+
+## 4. Strict Inequality `!==`
+
+1. String ID is `"101"`, number ID is `101`. Check if they are strictly not equal.  
+2. Boolean status is `true`, numeric status is `1`. Check if they are strictly not equal.  
+3. Password is `"abc123"`, confirm password is `"abc124"`. Check strict inequality.  
+4. Server data is `null`, local data is `undefined`. Check if they are strictly not equal.  
+5. Player IDs are `10` and `20`. Check if they are strictly not equal.
+
+***
+
+## 5. Greater Than `>`
+
+1. Age is `20`, voting age is `18`. Check if the person can vote.  
+2. Cart total is `650`, free shipping limit is `500`. Check if shipping is free.  
+3. Player score is `1200`, required score is `1000`. Check if level is unlocked.  
+4. Monthly income is `40000`, minimum required is `30000`. Check if loan is approved.  
+5. Steps today are `11000`, target is `10000`. Check if target is exceeded.
+
+***
+
+## 6. Less Than `<`
+
+1. Marks are `30`, fail threshold is `35`. Check if the student has failed.  
+2. Expenses are `8000`, budget is `10000`. Check if expenses are under budget.  
+3. Items left are `7`, low stock limit is `10`. Check if stock is low.  
+4. Vehicle speed is `40`, minimum speed is `50`. Check if vehicle is too slow.  
+5. Remaining time is `4` minutes, warning limit is `5`. Check if warning is needed.
+
+***
+
+## 7. Greater Than or Equal `>=`
+
+1. Age is `18`, voting age is `18`. Check if the person is eligible to vote.  
+2. Percentage is `75`, minimum required is `75`. Check if scholarship is granted.  
+3. User age is `14`, minimum age is `13`. Check if subscription is allowed.  
+4. Current score is `500`, minimum score is `500`. Check if player can proceed.  
+5. Experience is `3` years, required is `2` years. Check if candidate is eligible.
+
+***
+
+## 8. Less Than or Equal `<=`
+
+1. People in lift are `7`, max capacity is `8`. Check if it is safe to add one more.  
+2. File size is `5` MB, max allowed is `5` MB. Check if upload is allowed.  
+3. Participant age is `12`, max junior age is `12`. Check if they qualify as junior.  
+4. Data used is `9.5` GB, limit is `10` GB. Check if user is within limit.  
+5. Class strength is `40`, max allowed is `40`. Check if class is at valid capacity.
